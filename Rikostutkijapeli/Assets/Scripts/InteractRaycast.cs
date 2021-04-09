@@ -9,7 +9,7 @@ public class InteractRaycast : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if(Input.GetButtonDown("Fire1"))
         {
             Shoot();
         }
@@ -18,16 +18,18 @@ public class InteractRaycast : MonoBehaviour
     private void Shoot()
     {
         RaycastHit hit;
-        if (Physics.Raycast(mainCamera.transform.position, mainCamera.transform.forward, out hit, range))
+        if(Physics.Raycast(mainCamera.transform.position, mainCamera.transform.forward, out hit, range))
         {
             InteractableObject InteractableObject = hit.transform.GetComponent<InteractableObject>();
 
-            if (InteractableObject != null)
+            if(InteractableObject != null)
             {
-                Debug.Log("Interactable object : " + hit);
+                Debug.Log("Interactable object : " + hit.transform.name);
             }
-            Debug.Log(hit);
+            else
+            {
+                Debug.Log(hit.transform.name);
+            }
         }
-
     }
 }
