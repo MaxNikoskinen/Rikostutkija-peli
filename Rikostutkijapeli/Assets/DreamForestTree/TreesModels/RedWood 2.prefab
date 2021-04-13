@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 193105811232424698}
   - component: {fileID: 33065013992664210}
   - component: {fileID: 23466419510729776}
-  - component: {fileID: 2350931467002131052}
+  - component: {fileID: 4586563495247223619}
   m_Layer: 0
   m_Name: RedWood 2
   m_TagString: Untagged
@@ -91,8 +91,8 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &2350931467002131052
-MeshCollider:
+--- !u!136 &4586563495247223619
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -101,10 +101,10 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 43621386246375690}
+  m_Radius: 1.02
+  m_Height: 37.73
+  m_Direction: 1
+  m_Center: {x: -0.06, y: 17.3, z: 0.11}
 --- !u!21 &21440639111565978
 Material:
   serializedVersion: 6
