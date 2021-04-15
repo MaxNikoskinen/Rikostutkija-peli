@@ -3,11 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Footsteps : MonoBehaviour
-{/*
+{
     private PlayerMovement playerMovementScript;
     private AudioManager audioManagerScript;
-    private PauseScreen pauseScreenScript;
-    private HealthSystem healthSystem;
 
     public Rigidbody player;
 
@@ -15,15 +13,13 @@ public class Footsteps : MonoBehaviour
     {
         playerMovementScript = GameObject.FindObjectOfType<PlayerMovement>();
         audioManagerScript = GameObject.FindObjectOfType<AudioManager>();
-        pauseScreenScript = GameObject.FindObjectOfType<PauseScreen>();
-        healthSystem = GameObject.FindObjectOfType<HealthSystem>();
     }
 
     void Update()
     {
-        if (playerMovementScript.grounded == true && player.velocity.magnitude > 2f && GetComponent<AudioSource>().isPlaying == false && pauseScreenScript.isPaused == false && healthSystem.isDead == false)
+        if (playerMovementScript.grounded == true && player.velocity.magnitude > 2f && GetComponent<AudioSource>().isPlaying == false)
         {
             GetComponent<AudioSource>().Play();
         }
-    }*/
+    }
 }
