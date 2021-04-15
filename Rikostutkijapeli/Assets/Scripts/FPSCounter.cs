@@ -29,7 +29,7 @@ public class FPSCounter : MonoBehaviour
 		if(deltaTime > 1 / updateRate) 
 		{
 			fps = Math.Round (frameCount / deltaTime, 0);
-			fpsCounterText.text = fps.ToString() + " FPS";
+			fpsCounterText.text = fps.ToString() + " k/s";
 			frameCount = 0;
 			deltaTime -= 1 / updateRate;
 		}
