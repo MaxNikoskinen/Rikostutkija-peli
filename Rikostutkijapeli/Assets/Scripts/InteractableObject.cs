@@ -8,6 +8,7 @@ public class InteractableObject : MonoBehaviour
     public GameObject trollFaceDialogue = null;
     public CursorChange cursorChangeScript = null;
     public PlayerMovement playerMovementScript = null;
+    public InteractIndicator interactIndicatorScript = null;
 
     public void DecideObject()
     {
@@ -17,6 +18,13 @@ public class InteractableObject : MonoBehaviour
         }
     }
 
+    public void DecideObjectIndicator()
+    {
+        if (objectStyle == 0)
+        {
+            TrollFaceConversationIndicator();
+        }
+    }
     
     public void TrollFaceConversation()
     {
@@ -24,5 +32,10 @@ public class InteractableObject : MonoBehaviour
         cursorChangeScript.ShowCursor();
         playerMovementScript.allowLooking = false;
         playerMovementScript.allowLooking = false;
+    }
+
+    public void TrollFaceConversationIndicator()
+    {
+        interactIndicatorScript.speakIndicator.SetActive(true);
     }
 }
