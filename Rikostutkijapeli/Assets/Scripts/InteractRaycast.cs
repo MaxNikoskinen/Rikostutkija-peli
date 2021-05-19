@@ -9,7 +9,7 @@ public class InteractRaycast : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetButtonDown("Fire1"))
+        if(Input.GetKeyDown(KeyCode.E))
         {
             Shoot();
         }
@@ -25,6 +25,7 @@ public class InteractRaycast : MonoBehaviour
             if(InteractableObject != null)
             {
                 Debug.Log("Interactable object : " + hit.transform.name);
+                InteractableObject.DecideObject();
             }
             else
             {

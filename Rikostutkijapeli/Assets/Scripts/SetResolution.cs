@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System.Linq;
 
 public class SetResolution : MonoBehaviour
 {
@@ -11,7 +12,7 @@ public class SetResolution : MonoBehaviour
 
     private void Start()
     {
-        resolutions = Screen.resolutions;
+        resolutions = Screen.resolutions.Select(resolution => new Resolution { width = resolution.width, height = resolution.height }).Distinct().ToArray(); //estää montaa samaa resoluutio ilmestymästä listaan
 
         resolutionDropdown.ClearOptions();
 
@@ -21,7 +22,7 @@ public class SetResolution : MonoBehaviour
 
         for (int i = 0; i < resolutions.Length; i++)
         {
-            string option = resolutions[i].width + " X " + resolutions[i].height + ", " + resolutions[i].refreshRate + " HZ";
+            string option = resolutions[i].width + " x " + resolutions[i].height/* + ", " + resolutions[i].refreshRate + " hz"*/;
             options.Add(option);
 
             if (resolutions[i].width == Screen.width && resolutions[i].height == Screen.height) 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Ammobar : MonoBehaviour
+public class ProgressBar : MonoBehaviour
 {
     public int maximum;
     public int current;

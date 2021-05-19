@@ -3,7 +3,11 @@
 using System;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour {
+public class PlayerMovement : MonoBehaviour
+{
+
+    public bool allowMovement = true;
+    public bool allowLooking = true;
 
     //Assingables
     public Transform playerCam;
@@ -70,16 +74,19 @@ public class PlayerMovement : MonoBehaviour {
     /// Find user input. Should put this in its own class but im lazy
     /// </summary>
     private void MyInput() {
-        x = Input.GetAxisRaw("Horizontal");
-        y = Input.GetAxisRaw("Vertical");
-        jumping = Input.GetButton("Jump");
-        crouching = Input.GetKey(KeyCode.LeftControl);
-      
-        //Crouching
-        if (Input.GetKeyDown(KeyCode.LeftControl))
-            StartCrouch();
-        if (Input.GetKeyUp(KeyCode.LeftControl))
-            StopCrouch();
+        if(allowMovement)
+        {
+            x = Input.GetAxisRaw("Horizontal");
+            y = Input.GetAxisRaw("Vertical");
+            jumping = Input.GetButton("Jump");
+            crouching = Input.GetKey(KeyCode.LeftControl);
+
+            //Crouching
+            if (Input.GetKeyDown(KeyCode.LeftControl))
+                StartCrouch();
+            if (Input.GetKeyUp(KeyCode.LeftControl))
+                StopCrouch();
+        }
     }
 
     private void StartCrouch() {
@@ -167,21 +174,25 @@ public class PlayerMovement : MonoBehaviour {
     }
     
     private float desiredX;
-    private void Look() {
-        float mouseX = Input.GetAxis("Mouse X") * sensitivity * Time.fixedDeltaTime * sensMultiplier;
-        float mouseY = Input.GetAxis("Mouse Y") * sensitivity * Time.fixedDeltaTime * sensMultiplier;
+    private void Look()
+    {
+        if(allowLooking)
+        {
+            float mouseX = Input.GetAxis("Mouse X") * sensitivity * Time.fixedDeltaTime * sensMultiplier;
+            float mouseY = Input.GetAxis("Mouse Y") * sensitivity * Time.fixedDeltaTime * sensMultiplier;
 
-        //Find current look rotation
-        Vector3 rot = playerCam.transform.localRotation.eulerAngles;
-        desiredX = rot.y + mouseX;
-        
-        //Rotate, and also make sure we dont over- or under-rotate.
-        xRotation -= mouseY;
-        xRotation = Mathf.Clamp(xRotation, -90f, 90f);
+            //Find current look rotation
+            Vector3 rot = playerCam.transform.localRotation.eulerAngles;
+            desiredX = rot.y + mouseX;
 
-        //Perform the rotations
-        playerCam.transform.localRotation = Quaternion.Euler(xRotation, desiredX, 0);
-        orientation.transform.localRotation = Quaternion.Euler(0, desiredX, 0);
+            //Rotate, and also make sure we dont over- or under-rotate.
+            xRotation -= mouseY;
+            xRotation = Mathf.Clamp(xRotation, -90f, 90f);
+
+            //Perform the rotations
+            playerCam.transform.localRotation = Quaternion.Euler(xRotation, desiredX, 0);
+            orientation.transform.localRotation = Quaternion.Euler(0, desiredX, 0);
+        }
     }
 
     private void CounterMovement(float x, float y, Vector2 mag) {
@@ -267,4 +278,14 @@ public class PlayerMovement : MonoBehaviour {
         grounded = false;
     }
     
+
+    public void EnableLooking()
+    {
+        allowLooking = true;
+    }
+
+    public void EnableMoving()
+    {
+        allowMovement = true;
+    }
 }

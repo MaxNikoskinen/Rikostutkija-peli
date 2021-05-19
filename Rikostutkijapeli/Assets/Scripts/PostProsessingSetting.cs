@@ -10,7 +10,7 @@ public class PostProsessingSetting : MonoBehaviour
     public PostProcessVolume postProcessVolume;
     public PostProcessLayer postProcessLayer;
 
-//    public TMP_Dropdown ambientOcclusionDropdown;
+    public TMP_Dropdown ambientOcclusionDropdown;
     public TMP_Dropdown bloomDropdown;
     public TMP_Dropdown colorGradingDropdown;
 //    public TMP_Dropdown lensDistortionDropdown;
@@ -41,7 +41,7 @@ public class PostProsessingSetting : MonoBehaviour
 
     private void Start()
     {
-//        ambientOcclusionDropdown.value = PlayerPrefs.GetInt("AmbientOcclusionActive", 1);
+        ambientOcclusionDropdown.value = PlayerPrefs.GetInt("AmbientOcclusionActive", 1);
         bloomDropdown.value = PlayerPrefs.GetInt("BloomActive", 1);
         colorGradingDropdown.value = PlayerPrefs.GetInt("ColorGradingActive", 1);
 //        lensDistortionDropdown.value = PlayerPrefs.GetInt("LensDistortionActive", 1);
