@@ -50,8 +50,16 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 normalVector = Vector3.up;
     private Vector3 wallNormalVector;
 
+
+    ///
+    private Inventory inventory;
+    public UIInventory uiInventory;
+
+
     void Awake() {
         rb = GetComponent<Rigidbody>();
+        inventory = new Inventory();
+        uiInventory.SetInventory(inventory);
     }
     
     void Start() {

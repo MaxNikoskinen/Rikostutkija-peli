@@ -9,8 +9,11 @@ public class EnableConsole : MonoBehaviour
     private bool isEnabled = false;
     private int isEnabledNumber = 0;
 
+    private ConsoleManager consoleManagerScript;
+
     private void Start()
     {
+        consoleManagerScript = GetComponent<ConsoleManager>();
         isEnabledNumber = PlayerPrefs.GetInt("ConsoleEnabled", 0);
 
         if (isEnabledNumber == 0)
@@ -44,6 +47,8 @@ public class EnableConsole : MonoBehaviour
         consoleUI.SetActive(true);
         isEnabledNumber = 1;
         PlayerPrefs.SetInt("ConsoleEnabled", isEnabledNumber);
+        consoleManagerScript.consoleInput.Select();
+        consoleManagerScript.consoleInput.ActivateInputField();
     }
 
     private void DisableConsoleUI()
