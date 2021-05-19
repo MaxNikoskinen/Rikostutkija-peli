@@ -7,12 +7,12 @@ Flare:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: SunFlare
-  m_FlareTexture: {fileID: 2800000, guid: e95d31bcbf1a7be4a812726adfdbd202, type: 3}
+  m_FlareTexture: {fileID: 2800000, guid: 1c193368e6a66974fb27ceaf7d7220c8, type: 3}
   m_TextureLayout: 2
   m_Elements:
   - m_ImageIndex: 0
     m_Position: 0
-    m_Size: 25
+    m_Size: 50
     m_Color: {r: 1, g: 1, b: 1, a: 0}
     m_UseLightColor: 1
     m_Rotate: 0
