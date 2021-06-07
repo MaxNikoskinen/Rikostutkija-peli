@@ -9,6 +9,7 @@ public class ConsoleManager : MonoBehaviour
     public Console consoleScript;
 
     private ConsoleFunctions functions;
+    private DisableUI disableUIScript;
     private int amount = 0;
     private int amount2 = 0;
     private int amount3 = 0;
@@ -16,6 +17,7 @@ public class ConsoleManager : MonoBehaviour
     private void Start()
     {
         functions = GetComponent<ConsoleFunctions>();
+        disableUIScript = GetComponent<DisableUI>();
         Debug.Log("Kirjoita (help) nähdäksesi komennot");
     }
 
@@ -70,13 +72,16 @@ public class ConsoleManager : MonoBehaviour
 
         else if (cmd == "help" || cmd == "HELP")
         {
+            Debug.Log("---");
             Debug.Log("Komennot:");
+            Debug.Log("---");
             Debug.Log("help");
             Debug.Log("loadscene (numero)");
             Debug.Log("close");
             Debug.Log("clear");
             Debug.Log("reload");
-            Debug.Log("debugcam");
+//            Debug.Log("disableui");
+            Debug.Log("---");
         }
 
 
@@ -98,7 +103,7 @@ public class ConsoleManager : MonoBehaviour
 
         else if (cmd == "debugcam" || cmd == "DEBUGCAM")
         {
-            Debug.Log("Debugcam");
+
         }
 
 
@@ -120,15 +125,27 @@ public class ConsoleManager : MonoBehaviour
         else if (cmd == "loadscene 0" || cmd == "LOADSCENE 0")
         {
             functions.LoadScene(0);
+            Time.timeScale = 1;
         }
         else if (cmd == "loadscene 1" || cmd == "LOADSCENE 1")
         {
             functions.LoadScene(1);
+            Time.timeScale = 1;
         }
         else if (cmd == "loadscene 2" || cmd == "LOADSCENE 2")
         {
             functions.LoadScene(2);
+            Time.timeScale = 1;
         }
+
+
+        /*
+        else if (cmd == "disableui" || cmd == "DISABLEUI") //mitäs sitten kun konsoli lähtee
+        {
+            disableUIScript.DoIt();
+        }*/
+
+
 
 
         else

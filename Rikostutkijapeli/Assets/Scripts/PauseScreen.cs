@@ -6,6 +6,12 @@ public class PauseScreen : MonoBehaviour
 {
     [HideInInspector] public bool isPaused = false;
 
+    public GameObject pauseScreen;
+    public PlayerMovementCC playerMovementScript;
+    public MouseLookCC mouseLookScript;
+    public GameObject settingsScreen;
+    public GameObject quitScreen;
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -28,6 +34,9 @@ public class PauseScreen : MonoBehaviour
         Time.timeScale = 0;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+        pauseScreen.SetActive(true);
+        mouseLookScript.allowLooking = false;
+        playerMovementScript.allowMovement = false;
     }
 
     //Jatka peliä
@@ -38,5 +47,10 @@ public class PauseScreen : MonoBehaviour
         Time.timeScale = 1;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        pauseScreen.SetActive(false);
+        mouseLookScript.allowLooking = true;
+        playerMovementScript.allowMovement = true;
+        settingsScreen.SetActive(false);
+        quitScreen.SetActive(false);
     }
 }
