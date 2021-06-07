@@ -9,8 +9,16 @@ public class EnableConsole : MonoBehaviour
     private bool isEnabled = false;
     private int isEnabledNumber = 0;
 
+    public bool isLevel = true;
+
+    public PlayerMovementCC playerMovementScript = null;
+    public MouseLookCC mouseLookScript = null;
+
+    private ConsoleManager consoleManagerScript;
+
     private void Start()
     {
+        consoleManagerScript = GetComponent<ConsoleManager>();
         isEnabledNumber = PlayerPrefs.GetInt("ConsoleEnabled", 0);
 
         if (isEnabledNumber == 0)
@@ -44,6 +52,17 @@ public class EnableConsole : MonoBehaviour
         consoleUI.SetActive(true);
         isEnabledNumber = 1;
         PlayerPrefs.SetInt("ConsoleEnabled", isEnabledNumber);
+        consoleManagerScript.consoleInput.Select();
+        consoleManagerScript.consoleInput.ActivateInputField();
+        if(isLevel == true)
+        {
+            mouseLookScript.allowLooking = false;
+            playerMovementScript.allowMovement = false;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+        
+        
     }
 
     private void DisableConsoleUI()
@@ -53,5 +72,13 @@ public class EnableConsole : MonoBehaviour
         isEnabledNumber = 0;
         PlayerPrefs.SetInt("ConsoleEnabled", isEnabledNumber);
         Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+        if(isLevel == true)
+        {
+            mouseLookScript.allowLooking = true;
+            playerMovementScript.allowMovement = true;
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
+        
     }
 }
