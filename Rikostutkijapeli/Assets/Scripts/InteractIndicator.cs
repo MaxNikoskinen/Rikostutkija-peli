@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class InteractIndicator : MonoBehaviour
 {
     public GameObject speakIndicator;
+    public TMP_Text text;
     public Camera mainCamera;
     public float range = 10;
 

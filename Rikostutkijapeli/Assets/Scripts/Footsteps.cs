@@ -4,20 +4,20 @@ using UnityEngine;
 
 public class Footsteps : MonoBehaviour
 {
-    private PlayerMovement playerMovementScript;
+    private PlayerMovementCC playerMovementScript;
     private AudioManager audioManagerScript;
 
     public Rigidbody player;
 
     void Start()
     {
-        playerMovementScript = GameObject.FindObjectOfType<PlayerMovement>();
+        playerMovementScript = GameObject.FindObjectOfType<PlayerMovementCC>();
         audioManagerScript = GameObject.FindObjectOfType<AudioManager>();
     }
 
     void Update()
     {
-        if (playerMovementScript.grounded == true && player.velocity.magnitude > 2f && GetComponent<AudioSource>().isPlaying == false)
+        if (playerMovementScript.isGrounded == true && player.velocity.magnitude > 2f && GetComponent<AudioSource>().isPlaying == false)
         {
             GetComponent<AudioSource>().Play();
         }
