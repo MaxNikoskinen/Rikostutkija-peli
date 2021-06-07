@@ -137,6 +137,11 @@ public class ConsoleManager : MonoBehaviour
             functions.LoadScene(2);
             Time.timeScale = 1;
         }
+        else if (cmd == "loadscene 3" || cmd == "LOADSCENE 3")
+        {
+            functions.LoadScene(3);
+            Time.timeScale = 1;
+        }
 
 
         /*
